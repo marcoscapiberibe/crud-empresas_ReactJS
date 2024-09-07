@@ -19,9 +19,19 @@ const CompanyTable: React.FC = () => {
   }, [currentPage]);
 
   const fetchCompanies = async (page: number) => {
-    const res = await axios.get(`http://127.0.0.1:5000/empresas?start=${page * 25}&limit=25`);
-    setCompanies(res.data);
-    setPageCount(Math.ceil(100 / 25));
+    const token = localStorage.getItem('token'); // Obtém o token armazenado no login
+    try {
+      const res = await axios.get(`http://127.0.0.1:5000/empresas?start=${page * 25}&limit=25`, {
+        headers: {
+          Authorization: `Bearer ${token}` // Inclui o token JWT no cabeçalho da requisição
+        }
+      });
+      setCompanies(res.data);
+      setPageCount(Math.ceil(100 / 25)); // Ajuste conforme o número de empresas disponíveis
+    } catch (err) {
+      console.error('Erro ao buscar empresas:', err);
+      // Erros relacionados à autenticação
+    }
   };
 
   const handlePageClick = (data: { selected: number }) => {
