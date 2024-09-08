@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
+import './App.css';
 import CompanyTable from './components/CompanyTable';
 import Login from './components/Login';
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!localStorage.getItem('token'));
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const handleLogin = () => {
-    setIsLoggedIn(true); // Atualiza o estado do usuário como logado
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
   };
 
   return (
     <div className="App">
-      {isLoggedIn ? <CompanyTable /> : <Login onLogin={handleLogin} />}
+      {isLoggedIn ? (
+        <CompanyTable onLogout={handleLogout} />
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
     </div>
   );
 };

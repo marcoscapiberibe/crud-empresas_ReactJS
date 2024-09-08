@@ -17,8 +17,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         username,
         password
       });
-      const token = response.data.token;
-      localStorage.setItem('token', token); // Armazena o token no localStorage
+      
+      // Armazena tanto o access_token quanto o refresh_token no localStorage
+      const accessToken = response.data.access_token;
+      const refreshToken = response.data.refresh_token;
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('refresh_token', refreshToken);
+
       onLogin(); // Chama a função para alterar o estado de login
       setError('');
     } catch (err) {
