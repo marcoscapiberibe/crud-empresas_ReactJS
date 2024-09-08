@@ -59,6 +59,18 @@ npm start
 
 O frontend será aberto no navegador automaticamente em `http://localhost:3000`.
 
+OBS: Antes de rodar o projeto Front-end, é necessário rodar primeiro a API em Flask
+
+
+## Instruções para executar o projeto em produção
+
+1. Abra o Navegador e acesse o link:
+
+```bash
+https://marcoscapiberibe.github.io/crud-empresas_ReactJS/
+```
+
+
 ## Usuário de Testes
 
 Para testar a aplicação, utilize as credenciais abaixo:
