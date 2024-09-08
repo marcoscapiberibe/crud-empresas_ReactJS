@@ -11,30 +11,36 @@ interface Company {
 }
 
 interface CompanyTableProps {
-  onLogout: () => void;  // Função para redirecionar para o login
+  onLogout: () => void;
 }
 
 const CompanyTable: React.FC<CompanyTableProps> = ({ onLogout }) => {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [editingCompany, setEditingCompany] = useState<Company | null>(null); // Corrigir o tipo
+  const [editingCompany, setEditingCompany] = useState<Company | null>(null);
+  const [searchTerm, setSearchTerm] = useState(''); // Termo de pesquisa
+  const [sortColumn, setSortColumn] = useState('cnpj'); // Coluna padrão de ordenação
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc'); // Direção padrão
 
   useEffect(() => {
-    fetchCompanies(currentPage);
-  }, [currentPage]);
+    fetchCompanies(currentPage, searchTerm, sortColumn, sortDirection);
+  }, [currentPage, searchTerm, sortColumn, sortDirection]);
 
-  const fetchCompanies = async (page: number) => {
+  const fetchCompanies = async (page: number, search: string, sort: string, dir: string) => {
     const token = localStorage.getItem('token');
-    const res = await axios.get(`http://127.0.0.1:5000/empresas?start=${page * 25}&limit=25`, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    const res = await axios.get(
+      `http://127.0.0.1:5000/empresas?start=${page * 25}&limit=25&search=${search}&sort=${sort}&dir=${dir}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-    });
-  
+    );
+
     const { empresas, total } = res.data;
     setCompanies(empresas);
-    setPageCount(Math.ceil(total / 25));  // Usa o total para calcular o número de páginas
+    setPageCount(Math.ceil(total / 25));
   };
 
   const handlePageClick = (data: { selected: number }) => {
@@ -46,58 +52,74 @@ const CompanyTable: React.FC<CompanyTableProps> = ({ onLogout }) => {
     try {
       await axios.delete(`http://127.0.0.1:5000/empresa/${cnpj}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-      fetchCompanies(currentPage); // Atualiza a lista após exclusão
+      fetchCompanies(currentPage, searchTerm, sortColumn, sortDirection); // Atualiza a lista após exclusão
     } catch (err) {
       console.error('Erro ao deletar empresa', err);
     }
   };
 
   const handleEdit = (company: Company) => {
-    setEditingCompany(company); // Configura a empresa em edição
+    setEditingCompany(company);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove o token do localStorage
-    onLogout(); // Redireciona para a tela de login
+    localStorage.removeItem('token');
+    onLogout();
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(0); // Reinicia para a primeira página quando a pesquisa for alterada
+  };
+
+  const handleSort = (column: string) => {
+    const newDirection = sortColumn === column && sortDirection === 'asc' ? 'desc' : 'asc';
+    setSortColumn(column);
+    setSortDirection(newDirection);
   };
 
   return (
     <div>
       <h2>Lista de Empresas</h2>
 
-      {/* Botão de Sair */}
       <button onClick={handleLogout} style={{ float: 'right', marginBottom: '20px' }}>Sair</button>
 
-      {/* Condição: Se não estiver editando, exibir o botão para criar nova empresa */}
+      {/* Campo de pesquisa */}
+      <input
+        type="text"
+        placeholder="Pesquisar empresas..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+        style={{ marginBottom: '20px', display: 'block' }}
+      />
+
       {!editingCompany && (
         <button onClick={() => setEditingCompany({ cnpj: '', nome_razao: '', nome_fantasia: '', cnae: '' })}>
           Criar Nova Empresa
         </button>
       )}
 
-      {/* Exibir o formulário de edição ou criação */}
       {editingCompany && (
         <CompanyForm
           initialData={editingCompany.cnpj ? editingCompany : undefined}
           onSuccess={() => {
             setEditingCompany(null);
-            fetchCompanies(currentPage);
+            fetchCompanies(currentPage, searchTerm, sortColumn, sortDirection);
           }}
         />
       )}
 
-      {/* Exibir a tabela de empresas se não estiver criando ou editando */}
       {!editingCompany && (
         <table>
           <thead>
             <tr>
-              <th>CNPJ</th>
-              <th>Razão Social</th>
-              <th>Nome Fantasia</th>
-              <th>CNAE</th>
+              <th onClick={() => handleSort('cnpj')}>CNPJ</th>
+              <th onClick={() => handleSort('nome_razao')}>Razão Social</th>
+              <th onClick={() => handleSort('nome_fantasia')}>Nome Fantasia</th>
+              <th onClick={() => handleSort('cnae')}>CNAE</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -118,7 +140,6 @@ const CompanyTable: React.FC<CompanyTableProps> = ({ onLogout }) => {
         </table>
       )}
 
-      {/* Paginação */}
       <ReactPaginate
         previousLabel={'Anterior'}
         nextLabel={'Próximo'}
