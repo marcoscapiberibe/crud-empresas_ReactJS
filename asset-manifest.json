@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/marcoscapiberibe/crud-empresas_ReactJS/static/css/main.43932b2c.css",
-    "main.js": "/marcoscapiberibe/crud-empresas_ReactJS/static/js/main.2e127208.js",
-    "static/js/453.28a9e274.chunk.js": "/marcoscapiberibe/crud-empresas_ReactJS/static/js/453.28a9e274.chunk.js",
-    "index.html": "/marcoscapiberibe/crud-empresas_ReactJS/index.html",
-    "main.43932b2c.css.map": "/marcoscapiberibe/crud-empresas_ReactJS/static/css/main.43932b2c.css.map",
-    "main.2e127208.js.map": "/marcoscapiberibe/crud-empresas_ReactJS/static/js/main.2e127208.js.map",
-    "453.28a9e274.chunk.js.map": "/marcoscapiberibe/crud-empresas_ReactJS/static/js/453.28a9e274.chunk.js.map"
+    "main.css": "/crud-empresas_ReactJS/static/css/main.43932b2c.css",
+    "main.js": "/crud-empresas_ReactJS/static/js/main.365eac90.js",
+    "static/js/453.28a9e274.chunk.js": "/crud-empresas_ReactJS/static/js/453.28a9e274.chunk.js",
+    "index.html": "/crud-empresas_ReactJS/index.html",
+    "main.43932b2c.css.map": "/crud-empresas_ReactJS/static/css/main.43932b2c.css.map",
+    "main.365eac90.js.map": "/crud-empresas_ReactJS/static/js/main.365eac90.js.map",
+    "453.28a9e274.chunk.js.map": "/crud-empresas_ReactJS/static/js/453.28a9e274.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.43932b2c.css",
-    "static/js/main.2e127208.js"
+    "static/js/main.365eac90.js"
   ]
 }
