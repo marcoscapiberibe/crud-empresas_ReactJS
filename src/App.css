@@ -1,70 +1,30 @@
-/* Tabela responsiva */
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 8px 16px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  @media (max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-  
-    thead tr {
-      display: none;
-    }
-  
-    td {
-      position: relative;
-      padding-left: 50%;
-    }
-  
-    td:before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      padding-left: 10px;
-      white-space: nowrap;
-    }
-  }
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-  .pagination {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .pagination li {
-    margin: 0 5px;
-  }
-  
-  .pagination li a {
-    display: block;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    color: #007bff;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination li a:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .pagination .active a {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-  }
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pagination li.active a {
+  background-color: #1976d2;
+  color: white;
+}
+
+.pagination li.disabled a {
+  color: #aaa;
+  cursor: not-allowed;
+}

@@ -4,3 +4,4 @@ export interface Company {
     nome_fantasia: string;
     cnae: string;
   }
+  
