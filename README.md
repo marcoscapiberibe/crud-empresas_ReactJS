@@ -33,6 +33,11 @@ O front-end se comunica com uma API desenvolvida em Flask, consumindo os seguint
 
 ## Instruções para executar o projeto localmente
 
+OBS: Antes de rodar este projeto, é necessário rodar primeiro a API em Flask
+```bash
+https://github.com/marcoscapiberibe/CRUD_Flask
+```
+
 1. Clone o repositório:
 
 ```bash
@@ -59,10 +64,13 @@ npm start
 
 O frontend será aberto no navegador automaticamente em `http://localhost:3000`.
 
-OBS: Antes de rodar o projeto Front-end, é necessário rodar primeiro a API em Flask
-
 
 ## Instruções para executar o projeto em produção
+
+OBS: Antes de rodar este projeto, é necessário rodar primeiro a API em Flask
+```bash
+https://github.com/marcoscapiberibe/CRUD_Flask
+```
 
 1. Abra o Navegador e acesse o link:
 
