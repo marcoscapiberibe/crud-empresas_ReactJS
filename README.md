@@ -11,7 +11,6 @@ O front-end se comunica com uma API desenvolvida em Flask, consumindo os seguint
 - PUT /empresa/<cnpj>: atualiza os dados de uma empresa existente.
 - DELETE /empresa/<cnpj>: exclui uma empresa.
 
-A URL base da API deve ser configurada no arquivo .env como REACT_APP_API_URL. Por padrão, ela é http://127.0.0.1:5000 se a API estiver rodando localmente.
 
 ## Bibliotecas Utilizadas
 
@@ -46,13 +45,7 @@ cd frontend
 npm install
 ```
 
-4. Crie um arquivo `.env` na raiz do projeto, se necessário, e configure a URL da API back-end (por exemplo):
-
-```
-REACT_APP_API_URL=http://127.0.0.1:5000
-```
-
-5. Execute o projeto:
+4. Execute o projeto:
 
 ```bash
 npm start
