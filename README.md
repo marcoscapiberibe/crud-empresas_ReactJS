@@ -1,6 +1,12 @@
-# Projeto React JS - Front-end Cadastro de Empresas
+# Projeto React JS - Cadastro de Empresas
 
 Este projeto é o front-end de uma aplicação para gerenciamento de empresas, desenvolvido em React JS. Ele consome uma API desenvolvida em Flask para realizar operações de CRUD (Criar, Ler, Atualizar e Deletar) de empresas.
+
+## Demonstração
+
+<p align="center">
+  <img src="video.gif" alt="Demonstração do Projeto">
+</p>
 
 ## Consumo da API Flask
 
