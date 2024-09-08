@@ -2,6 +2,12 @@
 
 Este projeto é o front-end de uma aplicação para gerenciamento de empresas, desenvolvido em React JS. Ele consome uma API desenvolvida em Flask para realizar operações de CRUD (Criar, Ler, Atualizar e Deletar) de empresas.
 
+## Demonstração
+
+<p align="center">
+  <img src="video.gif" alt="Demonstração do Projeto">
+</p>
+
 ## Consumo da API Flask
 
 O front-end se comunica com uma API desenvolvida em Flask, consumindo os seguintes endpoints:
