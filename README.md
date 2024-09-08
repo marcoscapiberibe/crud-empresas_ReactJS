@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# Projeto React JS - Front-end Cadastro de Empresas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é o front-end de uma aplicação para gerenciamento de empresas, desenvolvido em React JS. Ele consome uma API desenvolvida em Flask para realizar operações de CRUD (Criar, Ler, Atualizar e Deletar) de empresas.
 
-## Available Scripts
+## Consumo da API Flask
 
-In the project directory, you can run:
+O front-end se comunica com uma API desenvolvida em Flask, consumindo os seguintes endpoints:
 
-### `npm start`
+- GET /empresas: lista todas as empresas.
+- POST /empresa: cria uma nova empresa.
+- PUT /empresa/<cnpj>: atualiza os dados de uma empresa existente.
+- DELETE /empresa/<cnpj>: exclui uma empresa.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Bibliotecas Utilizadas
 
-### `npm test`
+- React JS: biblioteca principal para a construção da interface de usuário.
+- Axios: para fazer requisições HTTP à API Flask.
+- Material-UI (MUI): para estilização e criação de componentes visuais.
+- React Input Mask: para facilitar a manipulação de máscaras de input (CNPJ e CNAE).
+- React Paginate: para paginação dos dados de empresas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pré-requisitos
 
-### `npm run build`
+- Node.js (versão mínima: 14.x.x)
+- NPM (ou Yarn)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instruções para executar o projeto localmente
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone o repositório:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/marcoscapiberibe/crud-empresas_ReactJS.git
+```
 
-### `npm run eject`
+2. Navegue até a pasta do frontend:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+cd frontend
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Instale as dependências necessárias:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Execute o projeto:
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+O frontend será aberto no navegador automaticamente em `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usuário de Testes
+
+Para testar a aplicação, utilize as credenciais abaixo:
+
+- **Usuário**: `admin`
+- **Senha**: `senha654321`
+
+---
