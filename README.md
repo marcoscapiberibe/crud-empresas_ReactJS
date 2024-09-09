@@ -47,7 +47,7 @@ git clone https://github.com/marcoscapiberibe/crud-empresas_ReactJS.git
 2. Navegue até a pasta do frontend:
 
 ```bash
-cd frontend
+cd crud-empresas_ReactJS
 ```
 
 3. Instale as dependências necessárias:
